@@ -1,2 +1,12 @@
-# Cuál es la diferencia entre un condicional simple y un condicional compuesto?
-"""En una estructura condicional compuesta tenemos entradas, salidas, operaciones, tanto por la rama del verdadero como por la rama del falso. y para el simple se evalua solo si es falso o si es verdadero y se realiza una acción."""
+# Escriba un bloque cualquiera de código en Python en donde
+# utilice 2 condicionales (if) anidados.
+
+num1,num2,num3= 1,2,3
+
+if(num1<=num2):
+    if(num2<=num3):
+        print(f"{num3} es el mayor")
+    else: 
+        print(f"{num2} es mayor que {num3}")
+else:
+    print(f"{num1} es mayor que {num2}")
