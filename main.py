@@ -1,23 +1,4 @@
-# Enumere 5 tipos de datos en Python y suministre un valor de
-# ejemplo de cada uno.
-
-nombre = "Santiago Dulcey"
-edad = 23
-altura = 1.75
-vacio= None
-soyEstudiante = True
-listaImutable = ("Hola", "pedro")
-pasaTiempo = ["Programar", "Jugar", "Tocar Ukelele", 10]
-listaRopa = {
-    "gorra": False,
-    "pantalon": "Blue" 
-}
-#listar el array
-for tiempo in pasaTiempo:
-    print(f"\t Hola soy un pasaTiempo: {tiempo}")
-#Obtener la posición    
-for (index,value) in enumerate(pasaTiempo):
-    print(f"esta es la posición: {index}")
-print(listaRopa.get("pantalon"))
-print("".join(list(listaImutable)))
-print(type(listaImutable))
+# En sus propias palabras, qué son las funciones
+# preconstruidas y proporcione 2 ejemplos.
+# fuente: https://pythones.net/funciones-predefinidas-crear-nuestra-funcion/
+print("Son las funciones que vienen propias del lenguaje y facilitan el desarrollo, tales como las de los arreglos, metodos .join(), len(), etc")
