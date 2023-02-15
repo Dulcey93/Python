@@ -1,43 +1,21 @@
-# 10. En su casa le solicitan que realice un algoritmo en Python,
-# que permita calcular el valor a pagar por concepto de
-# energía eléctrica. Los datos que se conocen son los
-# siguientes:
-# - Mes de consumo - Valor kw
-# -Total kw consumido en el mes - estrato
-
-option =0
-class Cuenta:
-    def __init__(self, mes, valorkw, consumokw, estrato):
-        self.mes = mes
-        self.valorkw = valorkw
-        self.consumokw =consumokw 
-        self.estrato = estrato
-
-    def calcularTotal(self):
-            if(self.estrato==1):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*1.5}")
-            elif(self.estrato==2):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*1.6}")
-            elif(self.estrato==3):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*1.7}")
-            elif(self.estrato==4):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*1.8}")
-            elif(self.estrato==5):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*1.9}")
-            elif(self.estrato==6):
-                print(f"Valor total a pagar: {(self.consumokw * self.valorkw)*2.0}")
-
+# 11. Campus requiere administrar algunos datos de sus Campers
+# como por ejemplo, la creación, eliminación o búsqueda de los
+# developers, entre otros, por tal razón, ha solicitado el diseño de
+# un programa que cuente con el siguiente menú como panel de
+# control
+option = 0
 while(option != 2):
-    option = int (input((f""" ====> BIENVENIDO AL MENÚ POR FAVOR ELIJA UNA OPCIÓN <====
-    \n 1) Calcular valor a pagar
-    \n 2) Salir
-    \n""")))
-
-    if(option==1):
-        print(f""" ====> CALCULE SU VALOR A PAGAR <====""")
-        mes = int (input(f"Ingresar mes de consumo *EJEMPLO: 1-2-3-4...*: "))
-        valorkw = int (input(f"Ingrese el valor por kw: "))
-        consumokw = int (input(f"Ingrese el número de kw consumidos en el mes: "))
-        estrato = int (input(f"Ingrese su estrato: "))
-        instancia = Cuenta(mes, valorkw, consumokw, estrato)
-        instancia.calcularTotal()
+    option = int (input((f""" ....................MENU............................
+    \n 1.  CREAR GRUPO ARTEMIS:
+    \n 1.1 LISTAR CAMPERS DE ARTEMIS
+    \n 1.2 AGREGAR CAMPERS A ARTEMIS
+    \n 1.3 ELIMINAR CAMPERS DE ARTEMIS
+    \n 1.4 ORDENAR ALFABETICAMENTE EN LISTA DE ARTEMIS
+    \n 1.5 BUSCAR CAMPER EN LISTA DE ARTEMIS
+    \n 2.  CREAR GRUPO SPUTNIK:
+    \n 2.1 LISTAR CAMPERS DE SPUTNIK:
+    \n 2.2 AGREGAR CAMPERS A SPUTNIK
+    \n 2.3 ELIMINAR CAMPERS DE SPUTNIK
+    \n 2.4 ORDENAR ALFABETICAMENTE EN LISTA DE SPUTNIK
+    \n 2.5 BUSCAR CAMPER EN LISTA DE SPUTNIK
+    \n Digite opcion: """)))
