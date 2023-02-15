@@ -1,11 +1,14 @@
-# 1. Qué operadores utiliza Python en los siguientes casos:
+# En la jerarquía de operadores, cuáles son los que más
+# prioridad tienen cuando el intérprete de Python los evalúa?
 
-# A. División Modular
-# B. Exponenciación
-# C. División que retorne entero.
-
-num1, num2 = 5,6
-print("====> Respuesta N°1<====")
-print(f"B. Exponenciación {num1}**{num2} = {num1**num2}")
-print(f"A. División Modular {num1}%{num2} = {num1%num2}")
-print(f"C. División que retorne entero. {num1}//{num2} = {num1//num2}")
+num1, num2, num3 = 10,5,3
+print("====> Respuesta N°2 <====")
+print(f""" El orden de prioridad sería el siguiente para los operadores aritméticos, siendo el primero el de mayor prioridad:
+    \n() Paréntesis
+    \n** Exponente
+    \n-x Negación
+    \n* / // Multiplicación, División, Cociente, Módulo
+    \n+ - Suma, Resta
+    \n EJEMPLO:
+    \n ({num1}*({num2}+{num3})) = {(num1*(num2+num3))} con paréntesis se realiza primero la suma 
+    \n {num1}*{num2}+{num3} = {num1*num2+num3} Sin paréntesis se realiza primero la multiplicación""")
