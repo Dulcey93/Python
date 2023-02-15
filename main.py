@@ -1,4 +1,2 @@
-# En sus propias palabras, qué son las funciones
-# preconstruidas y proporcione 2 ejemplos.
-# fuente: https://pythones.net/funciones-predefinidas-crear-nuestra-funcion/
-print("Son las funciones que vienen propias del lenguaje y facilitan el desarrollo, tales como las de los arreglos, metodos .join(), len(), etc")
+# Cuál es la diferencia entre un condicional simple y un condicional compuesto?
+"""En una estructura condicional compuesta tenemos entradas, salidas, operaciones, tanto por la rama del verdadero como por la rama del falso. y para el simple se evalua solo si es falso o si es verdadero y se realiza una acción."""
