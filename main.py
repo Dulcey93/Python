@@ -1,24 +1,40 @@
-#13. En pocos días comienza la vuelta a España y la federación colombiana de ciclismo, como incentivo ha determinado pagar un valor adicional. Cree un programa en Python que pida por teclado el sueldo básico por kilometro recorrido, el número de kilómetros recorridos durante toda la vuelta, numero de kilómetros recorridos con la camiseta de líder. Calcular el valor a pagar total, si se sabe que si recorre en la bici más de 1800 kilómetros con la camiseta de líder, esos kilómetros se consideran especiales y tendrán un recargo de 25%. El total de kilómetros por recorrer durante toda la vuelta serán 3.277 kilómetros,el ganador de la vuelta a España recibirá 700 millones de pesos colombianos.
+#14. Una empresa tiene 500 almacenes. Cada almacén debe  reportar el nombre y 5 registros c/u, contiene el tipo de articulo y el número de unidades vendidas de ese artículo. Haga un programa en Python para determinar cuál fue el almacén que mas vendió, cual fue el articulo más vendido de ese almacén y cual el más vendido en general.
 
-# Pedimos el sueldo básico por kilómetro recorrido, los kilómetros totales y los kilómetros con la camiseta de líder
-sueldo_km = float(input("Ingrese el sueldo básico por kilómetro recorrido: "))
-km_totales = int(input("Ingrese el número de kilómetros recorridos durante toda la vuelta: "))
-km_lider = int(input("Ingrese el número de kilómetros recorridos con la camiseta de líder: "))
+# Definimos una constante para el número de almacenes
+NUM_ALMACENES = 500
 
-# Calculamos el valor a pagar sin el recargo por los kilómetros especiales
-valor_sin_recargo = sueldo_km * km_totales
+# Creamos un diccionario para almacenar la información de ventas de cada almacén
+ventas_almacenes = {}
 
-# Si los kilómetros con la camiseta de líder son más de 1800, aplicamos el recargo del 25%
-if km_lider > 1800:
-    km_recargo = km_lider - 1800
-    valor_recargo = sueldo_km * km_recargo * 0.25
-    valor_total = valor_sin_recargo + valor_recargo
-else:
-    valor_total = valor_sin_recargo
+# Pedimos al usuario que ingrese la información de ventas de cada almacén
+for i in range(1, NUM_ALMACENES + 1):
+    print("Ingrese información de ventas para el almacén", i)
+    nombre_almacen = input("Nombre del almacén: ")
+    ventas = {}
+    for j in range(1, 6):
+        tipo_articulo = input("Tipo de artículo vendido: ")
+        unidades_vendidas = int(input("Número de unidades vendidas: "))
+        ventas[tipo_articulo] = unidades_vendidas
+    ventas_almacenes[nombre_almacen] = ventas
 
-# Informamos el valor total a pagar
-print("El valor total a pagar es:", valor_total, "pesos colombianos.")
+# Determinamos el almacén que más vendió y el artículo más vendido de ese almacén
+max_ventas_almacen = None
+max_ventas_articulo_almacen = None
+max_ventas_total = 0
+max_ventas_articulo_total = None
 
-# Comprobamos si el ciclista es el ganador de la vuelta a España
-if km_lider == km_totales:
-    print("¡Felicitaciones! Eres el ganador de la vuelta a España y recibirás un premio de 700 millones de pesos colombianos.")
+for nombre_almacen, ventas in ventas_almacenes.items():
+    total_ventas_almacen = sum(ventas.values())
+    if total_ventas_almacen > max_ventas_total:
+        max_ventas_total = total_ventas_almacen
+        max_ventas_almacen = nombre_almacen
+        max_ventas_articulo_almacen = max(ventas, key=ventas.get)
+    max_ventas_articulo = max(ventas, key=ventas.get)
+    if max_ventas_articulo_total is None or ventas[max_ventas_articulo] > ventas[max_ventas_articulo_total]:
+        max_ventas_articulo_total = max_ventas_articulo
+
+# Mostramos los resultados
+print("El almacén que más vendió fue:", max_ventas_almacen)
+print("El artículo más vendido en ese almacén fue:", max_ventas_articulo_almacen)
+print("El artículo más vendido en general fue:", max_ventas_articulo_total)
+
