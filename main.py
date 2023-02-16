@@ -1,24 +1,24 @@
-#12. N atletas han pasado a finales en salto triple en los juegos olímpicos de 2022. Diseñe un programa que pida por teclado los nombres de cada atleta finalista y a su vez, sus marcas del salto en metros. Informar el nombre de la atleta campeona que se quede con la medalla de oro y si rompió récord, reportar el pago que será de 500 millones. El récord esta en 15,50 metros.
+#13. En pocos días comienza la vuelta a España y la federación colombiana de ciclismo, como incentivo ha determinado pagar un valor adicional. Cree un programa en Python que pida por teclado el sueldo básico por kilometro recorrido, el número de kilómetros recorridos durante toda la vuelta, numero de kilómetros recorridos con la camiseta de líder. Calcular el valor a pagar total, si se sabe que si recorre en la bici más de 1800 kilómetros con la camiseta de líder, esos kilómetros se consideran especiales y tendrán un recargo de 25%. El total de kilómetros por recorrer durante toda la vuelta serán 3.277 kilómetros,el ganador de la vuelta a España recibirá 700 millones de pesos colombianos.
 
-# Pedimos el número de atletas finalistas
-num_atletas = int(input("Ingrese el número de atletas finalistas: "))
+# Pedimos el sueldo básico por kilómetro recorrido, los kilómetros totales y los kilómetros con la camiseta de líder
+sueldo_km = float(input("Ingrese el sueldo básico por kilómetro recorrido: "))
+km_totales = int(input("Ingrese el número de kilómetros recorridos durante toda la vuelta: "))
+km_lider = int(input("Ingrese el número de kilómetros recorridos con la camiseta de líder: "))
 
-# Inicializamos el mejor salto y el nombre del atleta campeón
-mejor_salto = 0
-nombre_campeon = ""
+# Calculamos el valor a pagar sin el recargo por los kilómetros especiales
+valor_sin_recargo = sueldo_km * km_totales
 
-# Pedimos el nombre y la marca de salto de cada atleta
-for i in range(num_atletas):
-    nombre = input("Ingrese el nombre del atleta: ")
-    salto = float(input("Ingrese la marca de salto en metros: "))
-    
-    # Si el salto es mejor que el actual mejor salto, lo actualizamos
-    if salto > mejor_salto:
-        mejor_salto = salto
-        nombre_campeon = nombre
-
-# Comprobamos si el atleta campeón rompió el récord
-if mejor_salto > 15.50:
-    print("El atleta campeón es", nombre_campeon, "y ha roto el récord. Recibirá un pago de 500 millones.")
+# Si los kilómetros con la camiseta de líder son más de 1800, aplicamos el recargo del 25%
+if km_lider > 1800:
+    km_recargo = km_lider - 1800
+    valor_recargo = sueldo_km * km_recargo * 0.25
+    valor_total = valor_sin_recargo + valor_recargo
 else:
-    print("El atleta campeón es", nombre_campeon, "y no ha roto el récord.")
+    valor_total = valor_sin_recargo
+
+# Informamos el valor total a pagar
+print("El valor total a pagar es:", valor_total, "pesos colombianos.")
+
+# Comprobamos si el ciclista es el ganador de la vuelta a España
+if km_lider == km_totales:
+    print("¡Felicitaciones! Eres el ganador de la vuelta a España y recibirás un premio de 700 millones de pesos colombianos.")
