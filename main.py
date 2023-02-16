@@ -1,21 +1,24 @@
-# 11. Campus requiere administrar algunos datos de sus Campers
-# como por ejemplo, la creación, eliminación o búsqueda de los
-# developers, entre otros, por tal razón, ha solicitado el diseño de
-# un programa que cuente con el siguiente menú como panel de
-# control
-option = 0
-while(option != 2):
-    option = int (input((f""" ....................MENU............................
-    \n 1.  CREAR GRUPO ARTEMIS:
-    \n 1.1 LISTAR CAMPERS DE ARTEMIS
-    \n 1.2 AGREGAR CAMPERS A ARTEMIS
-    \n 1.3 ELIMINAR CAMPERS DE ARTEMIS
-    \n 1.4 ORDENAR ALFABETICAMENTE EN LISTA DE ARTEMIS
-    \n 1.5 BUSCAR CAMPER EN LISTA DE ARTEMIS
-    \n 2.  CREAR GRUPO SPUTNIK:
-    \n 2.1 LISTAR CAMPERS DE SPUTNIK:
-    \n 2.2 AGREGAR CAMPERS A SPUTNIK
-    \n 2.3 ELIMINAR CAMPERS DE SPUTNIK
-    \n 2.4 ORDENAR ALFABETICAMENTE EN LISTA DE SPUTNIK
-    \n 2.5 BUSCAR CAMPER EN LISTA DE SPUTNIK
-    \n Digite opcion: """)))
+#12. N atletas han pasado a finales en salto triple en los juegos olímpicos de 2022. Diseñe un programa que pida por teclado los nombres de cada atleta finalista y a su vez, sus marcas del salto en metros. Informar el nombre de la atleta campeona que se quede con la medalla de oro y si rompió récord, reportar el pago que será de 500 millones. El récord esta en 15,50 metros.
+
+# Pedimos el número de atletas finalistas
+num_atletas = int(input("Ingrese el número de atletas finalistas: "))
+
+# Inicializamos el mejor salto y el nombre del atleta campeón
+mejor_salto = 0
+nombre_campeon = ""
+
+# Pedimos el nombre y la marca de salto de cada atleta
+for i in range(num_atletas):
+    nombre = input("Ingrese el nombre del atleta: ")
+    salto = float(input("Ingrese la marca de salto en metros: "))
+    
+    # Si el salto es mejor que el actual mejor salto, lo actualizamos
+    if salto > mejor_salto:
+        mejor_salto = salto
+        nombre_campeon = nombre
+
+# Comprobamos si el atleta campeón rompió el récord
+if mejor_salto > 15.50:
+    print("El atleta campeón es", nombre_campeon, "y ha roto el récord. Recibirá un pago de 500 millones.")
+else:
+    print("El atleta campeón es", nombre_campeon, "y no ha roto el récord.")
