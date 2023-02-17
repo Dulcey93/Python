@@ -1,40 +1,117 @@
-#14. Una empresa tiene 500 almacenes. Cada almacén debe  reportar el nombre y 5 registros c/u, contiene el tipo de articulo y el número de unidades vendidas de ese artículo. Haga un programa en Python para determinar cuál fue el almacén que mas vendió, cual fue el articulo más vendido de ese almacén y cual el más vendido en general.
 
-# Definimos una constante para el número de almacenes
-NUM_ALMACENES = 500
+# 11. Campus requiere administrar algunos datos de sus Campers
+# como por ejemplo, la creación, eliminación o búsqueda de los
+# developers, entre otros, por tal razón, ha solicitado el diseño de
+# un programa que cuente con el siguiente menú como panel de
+# control
+class Grupo:
+    def __init__(self, team, nombreteam):
+        self.team = team
+        self.nombreteam = nombreteam
 
-# Creamos un diccionario para almacenar la información de ventas de cada almacén
-ventas_almacenes = {}
+    def Crear(self):
+            print(f"Se creó el grupo exitosamente {self.nombreteam} --> En estos momentos está vacío")
 
-# Pedimos al usuario que ingrese la información de ventas de cada almacén
-for i in range(1, NUM_ALMACENES + 1):
-    print("Ingrese información de ventas para el almacén", i)
-    nombre_almacen = input("Nombre del almacén: ")
-    ventas = {}
-    for j in range(1, 6):
-        tipo_articulo = input("Tipo de artículo vendido: ")
-        unidades_vendidas = int(input("Número de unidades vendidas: "))
-        ventas[tipo_articulo] = unidades_vendidas
-    ventas_almacenes[nombre_almacen] = ventas
+    def Listar(self):
+            print(f"--> Estos son los nombres de los estudiantes en {self.nombreteam}")
+            for estudiante in self.team:
+                print(f"{estudiante}")
 
-# Determinamos el almacén que más vendió y el artículo más vendido de ese almacén
-max_ventas_almacen = None
-max_ventas_articulo_almacen = None
-max_ventas_total = 0
-max_ventas_articulo_total = None
+    def Agregar(self, nombrecamper):
+            self.team.append(nombrecamper)
 
-for nombre_almacen, ventas in ventas_almacenes.items():
-    total_ventas_almacen = sum(ventas.values())
-    if total_ventas_almacen > max_ventas_total:
-        max_ventas_total = total_ventas_almacen
-        max_ventas_almacen = nombre_almacen
-        max_ventas_articulo_almacen = max(ventas, key=ventas.get)
-    max_ventas_articulo = max(ventas, key=ventas.get)
-    if max_ventas_articulo_total is None or ventas[max_ventas_articulo] > ventas[max_ventas_articulo_total]:
-        max_ventas_articulo_total = max_ventas_articulo
+    def Eliminar(self, nombrecamper):
+            self.team.remove(nombrecamper)
+    
+    def Ordenar(self):
+            print(f"Lista desordenada del team {self.nombreteam}")
+            for estudiante in self.team:
+                print(f"{estudiante}")
+            self.team.sort()
+            print(f"Lista ordenada del team {self.nombreteam}")
+            for estudiante in self.team:
+                print(f"{estudiante}")
+    
+    def Buscar(self,nombrecamper):
+            if(nombrecamper in self.team):
+                indice = self.team.index(nombrecamper)
+                print(f"El camper {nombrecamper} está en el grupo {self.nombreteam} en la posición: {indice}")
 
-# Mostramos los resultados
-print("El almacén que más vendió fue:", max_ventas_almacen)
-print("El artículo más vendido en ese almacén fue:", max_ventas_articulo_almacen)
-print("El artículo más vendido en general fue:", max_ventas_articulo_total)
-
+option = 0
+validation = False
+while(option != 3):
+    option = float (input((f""" ....................................................MENU...............................................................
+    \n 1.  CREAR GRUPO ARTEMIS:
+    \n 1.1 LISTAR CAMPERS DE ARTEMIS
+    \n 1.2 AGREGAR CAMPERS A ARTEMIS
+    \n 1.3 ELIMINAR CAMPERS DE ARTEMIS
+    \n 1.4 ORDENAR ALFABETICAMENTE EN LISTA DE ARTEMIS
+    \n 1.5 BUSCAR CAMPER EN LISTA DE ARTEMIS
+    \n 2.  CREAR GRUPO SPUTNIK:
+    \n 2.1 LISTAR CAMPERS DE SPUTNIK:
+    \n 2.2 AGREGAR CAMPERS A SPUTNIK
+    \n 2.3 ELIMINAR CAMPERS DE SPUTNIK
+    \n 2.4 ORDENAR ALFABETICAMENTE EN LISTA DE SPUTNIK
+    \n 2.5 BUSCAR CAMPER EN LISTA DE SPUTNIK
+    \n 3.  SALIR
+    \n Digite opcion: """)))
+    if option == 1:
+        print("====CREAR TEAM====")
+        artemis=[]
+        validation = True
+        artemisobj = Grupo(artemis, nombreteam="Artemis")
+        artemisobj.Crear()
+    if(validation):
+        if option == 1.1:
+            print("====LISTAR CAMPERS====")
+            artemisobj.Listar()
+        if option == 1.2:
+            print("====AGREGAR CAMPER====")
+            nombrecamper = input("Ingrese el nombre del camper: ")
+            artemisobj.Agregar(nombrecamper)
+            print(f"El estudiante '{nombrecamper}' se agregó al grupo: {artemisobj.nombreteam}")
+        if option == 1.3:
+            print("====ELIMINAR CAMPER====")
+            nombrecamper = input("Ingrese el nombre del camper: ")
+            artemisobj.Eliminar(nombrecamper)
+            print(f"El estudiante '{nombrecamper}' se eliminó del grupo: {artemisobj.nombreteam}")
+        if option == 1.4:
+            print("====ORDENAR TEAM ALFABETICAMENTE====")
+            artemisobj.Ordenar()
+        if option == 1.5:
+            print("====BUSCAR CAMPER====")
+            nombrecamper = input("Ingrese el nombre del camper: ")
+            artemisobj.Buscar(nombrecamper)
+    else:
+        print(f"El grupo está vacío por favor ingrese estudiantes")
+    
+        if option == 2:
+            print("====CREAR TEAM====")
+            sputnik=[]
+            validation = True
+            sputnikobj = Grupo(sputnik, nombreteam="Sputnik")
+            sputnikobj.Crear()
+        if(validation):
+            if option == 2.1:
+                print("====LISTAR CAMPERS====")
+                sputnikobj.Listar()
+            if option == 2.2:
+                print("====AGREGAR CAMPER====")
+                nombrecamper = input("Ingrese el nombre del camper: ")
+                sputnikobj.Agregar(nombrecamper)
+                print(f"El estudiante '{nombrecamper}' se agregó al grupo: {sputnikobj.nombreteam}")
+            if option == 2.3:
+                print("====ELIMINAR CAMPER====")
+                nombrecamper = input("Ingrese el nombre del camper: ")
+                sputnikobj.Eliminar(nombrecamper)
+                print(f"El estudiante '{nombrecamper}' se eliminó del grupo: {sputnikobj.nombreteam}")
+            if option == 2.4:
+                print("====ORDENAR TEAM ALFABETICAMENTE====")
+                sputnikobj.Ordenar()
+            if option == 2.5:
+                print("====BUSCAR CAMPER====")
+                nombrecamper = input("Ingrese el nombre del camper: ")
+                sputnikobj.Buscar(nombrecamper)
+                print(f"El estudiante '{nombrecamper}' se eliminó del grupo: {sputnikobj.nombreteam}")
+        else:
+            print(f"El grupo está vacío por favor ingrese estudiantes")
